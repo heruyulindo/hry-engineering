@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HRY Engineering</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f2f0;--fg:#0c0d0e;--mut:#575c63;--line:#cfd2d5;--card:#fbfbfa;--blue:#1b4dff;--ink:#0a0b0c;--ink-fg:#f1f2f0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0f11;--fg:#eceef0;--mut:#9ba1a9;--line:#2a2d32;--card:#15171a;--blue:#6485ff;--ink:#000;--ink-fg:#eceef0}}
+:root[data-theme="dark"]{--bg:#0e0f11;--fg:#eceef0;--mut:#9ba1a9;--line:#2a2d32;--card:#15171a;--blue:#6485ff;--ink:#000;--ink-fg:#eceef0}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.65 Archivo,"Helvetica Neue",Arial,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:9}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:8;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:28px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-stretch:112%;font-size:18px;margin-right:auto}
+.brand svg{height:28px;width:auto}
+nav{display:flex;gap:2px}
+nav a{text-decoration:none;padding:8px 12px;font-weight:600;font-size:15px;color:var(--mut);border-bottom:2px solid transparent}
+nav a:hover{color:var(--fg)}
+nav a[aria-current=page]{color:var(--fg);border-color:var(--blue)}
+.btn{display:inline-block;padding:14px 24px;font:700 16px Archivo,sans-serif;text-decoration:none;border:2px solid var(--blue);background:var(--blue);color:#fff;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alt{background:transparent;border-color:currentColor;color:inherit}
+header .btn{padding:9px 16px;font-size:14px}
+.page{display:none}.page.on{display:block}
+.hero{background:var(--ink);color:var(--ink-fg);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff12 1px,transparent 1px),linear-gradient(90deg,#ffffff12 1px,transparent 1px);background-size:56px 56px}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;padding-top:96px;padding-bottom:96px}
+h1{font-weight:800;font-stretch:110%;font-size:clamp(40px,5.8vw,70px);line-height:1.02;margin:0 0 24px;letter-spacing:-.02em}
+h2{font-weight:800;font-stretch:106%;font-size:clamp(24px,3vw,32px);line-height:1.15;margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:19px;line-height:1.3;margin:0 0 8px;font-weight:700}
+p{margin:0 0 16px;max-width:62ch}
+.lead{font-size:20px;color:#c6cad0;max-width:50ch}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.band{border-bottom:1px solid var(--line);background:var(--card)}
+.band .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.band .wrap>div{padding:28px 28px 28px 0}
+.band .wrap>div+div{padding-left:28px;border-left:1px solid var(--line)}
+.band p{margin:0;color:var(--mut);font-size:15px}
+.sec{display:grid;grid-template-columns:250px 1fr;gap:56px;padding:84px 0;border-top:1px solid var(--line)}
+.hero+.band+.wrap .sec:first-child,.pg>.wrap>.sec:first-child{border-top:0}
+.hd{align-self:start;position:sticky;top:calc(92px + env(safe-area-inset-top,0px))}
+.hd p{color:var(--mut);font-size:15px}
+.g2,.g3{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+.card{border:1px solid var(--line);background:var(--card);padding:26px;transition:border-color .15s}
+.card:hover{border-color:var(--blue)}
+.card ul{margin:10px 0 0;padding-left:18px;color:var(--mut);font-size:15px}
+.card li{margin:3px 0}
+.card p{color:var(--mut);font-size:15px;margin-bottom:12px}
+.tb{display:grid;grid-template-columns:auto 1fr;margin:14px 0 0;border-top:1px solid var(--line);font-size:14px}
+.tb dt,.tb dd{margin:0;padding:7px 0;border-bottom:1px solid var(--line)}
+.tb dt{color:var(--mut);padding-right:18px}
+.out{font-size:14px;color:var(--fg);border-top:1px solid var(--line);padding-top:10px;margin-top:14px}
+.out b{font-weight:700}
+.six{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--card)}
+.six>div{padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -1px -1px 0}
+.six b{display:inline-grid;place-items:center;width:28px;height:28px;background:var(--blue);color:#fff;font-size:14px;margin-bottom:12px}
+.six p{margin:0;color:var(--mut);font-size:15px}
+.cta{background:var(--ink);color:var(--ink-fg);padding:84px 0}
+.cta .lead{margin-bottom:28px}
+.more{margin-top:24px}
+.more a{font-weight:700;color:var(--blue);text-decoration:none;border-bottom:2px solid currentColor}
+form{display:grid;gap:16px;max-width:580px}
+label{font-weight:600;font-size:15px;display:grid;gap:6px}
+input,select,textarea{font:inherit;padding:12px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:0}
+.note{border-left:3px solid var(--blue);padding:2px 16px;color:var(--mut);font-size:15px}
+footer{background:var(--ink);color:#9ba1a9;padding:48px 0 32px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-right:16px}footer a:hover{color:#fff}
+@media (max-width:900px){.hero .wrap,.sec,.g2,.g3,.six,.band .wrap{grid-template-columns:1fr}.sec{gap:24px;padding:56px 0}.hd{position:static}.hero .wrap{padding-top:56px;padding-bottom:56px}
+.band .wrap>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}.band .wrap>div{padding:20px 0}
+header .wrap{height:auto;flex-wrap:wrap;gap:8px 16px;padding-top:10px;padding-bottom:6px}header .btn{display:none}nav{flex-wrap:wrap;width:100%}nav a{padding:6px 8px;font-size:14px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.draw{stroke-dasharray:480;stroke-dashoffset:480;animation:draw 2.4s ease-out .2s forwards}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 124 62"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="miter"><path d="M7 2V58"/><path d="M7 34H28V58"/><path d="M50 22V58"/><path d="M50 36H70"/><path d="M84 22L100 42L116 22"/><path d="M100 42V58"/></g></symbol></svg>
+<header><div class="wrap">
+<a class="brand" href="#home" aria-label="HRY Engineering home"><svg viewBox="0 0 124 62"><use href="#mark"/></svg>engineering</a>
+<nav id="nav" aria-label="Main"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#contact">Contact</a></nav>
+<a class="btn" href="#contact">Start a Project</a>
+</div></header>
+<main>
+<div class="page" id="home">
+<div class="hero"><div class="wrap">
+<div><h1>Engineering Ideas Into Practical Solutions.</h1>
+<p class="lead">We transform technical challenges into practical engineering solutions through design, analysis, and manufacturing-oriented problem-solving.</p>
+<div class="row"><a class="btn" href="#contact">Start a Project</a><a class="btn alt" href="#services">Explore Our Capabilities</a></div></div>
+<svg viewBox="0 0 440 360" fill="none" stroke="#fff" stroke-width="1.4" role="img" aria-label="Illustrative engineering drawing of a flanged part with a title block" style="width:100%;height:auto">
+<rect x="4" y="4" width="432" height="352" stroke="#ffffff55"/>
+<circle class="draw" cx="200" cy="150" r="102"/><circle class="draw" cx="200" cy="150" r="52"/><circle class="draw" cx="200" cy="150" r="20" stroke="#6485ff"/>
+<g stroke-dasharray="8 4" opacity=".55"><path d="M60 150H340M200 14V286"/></g>
+<g class="draw" stroke="#6485ff"><circle cx="200" cy="78" r="9"/><circle cx="272" cy="150" r="9"/><circle cx="200" cy="222" r="9"/><circle cx="128" cy="150" r="9"/></g>
+<g stroke="#9ba1a9"><path d="M98 276H302M98 270V282M302 270V282"/><path d="M372 48V252M366 48H378M366 252H378"/></g>
+<g stroke="#ffffff88"><path d="M4 296H436M250 296V356M340 296V356M4 326H436"/></g>
+<g fill="#9ba1a9" stroke="none" font-size="11" font-family="Archivo,sans-serif"><text x="16" y="315">HRY Engineering</text><text x="16" y="345">Illustrative drawing</text><text x="262" y="315">Scale 1:1</text><text x="262" y="345">Rev A</text><text x="352" y="315">Sheet 1/1</text><text x="352" y="345">mm</text></g>
+</svg>
+</div></div>
+<div class="band"><div class="wrap">
+<div><h3>Individuals</h3><p>Product ideas and repairs that need a proper drawing or analysis.</p></div>
+<div><h3>Startups</h3><p>Early-stage design, prototyping, and manufacturing readiness.</p></div>
+<div><h3>Manufacturing companies</h3><p>Design review, process improvement, and technical documentation.</p></div>
+</div></div>
+<div class="wrap">
+<div class="sec"><div class="hd"><h2>Engineering capabilities</h2><p>Six areas of work, from first concept to a part that can be made.</p></div><div class="g2" id="capgrid"></div></div>
+<div class="sec"><div class="hd"><h2>Our engineering approach</h2><p>A defined path from problem to deliverable.</p></div><div class="six" id="sixgrid"></div></div>
+<div class="sec"><div class="hd"><h2>Featured projects</h2><p>Design and analysis work documented from university and personal projects.</p></div><div><div class="g3" id="featgrid"></div><p class="more"><a href="#projects">See all projects</a></p></div></div>
+<div class="sec"><div class="hd"><h2>Why HRY Engineering</h2></div><div class="g3">
+<div class="card"><h3>Analysis before assumption</h3><p>Decisions are backed by calculation, simulation, or testing, and the assumptions are written down.</p></div>
+<div class="card"><h3>Built to be made</h3><p>Every design is reviewed for material, process, and cost early, so it survives contact with production.</p></div>
+<div class="card"><h3>Clear documentation</h3><p>You receive drawings, models, and a short record of why each decision was made.</p></div></div></div>
+</div>
+<div class="cta"><div class="wrap"><h2>Have a technical problem to solve?</h2><p class="lead">Tell us what you want to build, fix, or improve. We will tell you how we would approach it.</p><a class="btn" href="#contact">Start a Project</a></div></div>
+</div>
+
+<div class="page pg" id="about"><div class="wrap">
+<div class="sec"><div class="hd"><h2>About HRY Engineering</h2></div><div>
+<p style="font-size:20px">HRY Engineering began as an engineering initiative during university, a place to work on real technical problems beyond coursework. It is now being rebuilt as an independent engineering service.</p>
+<p>The aim is a practical consultancy that supports individuals, startups, and manufacturing companies with design, analysis, and process-focused engineering work.</p></div></div>
+<div class="sec"><div class="hd"><h2>How we think</h2></div><div class="g2">
+<div class="card"><h3>Analytical thinking</h3><p>Break a problem into measurable parts before proposing a fix.</p></div>
+<div class="card"><h3>Technical discipline</h3><p>Document assumptions, check results, and keep drawings and models clean.</p></div>
+<div class="card"><h3>Continuous improvement</h3><p>Each iteration, whether a design revision or a process change, should teach something.</p></div>
+<div class="card"><h3>Concept to application</h3><p>Engineering theory only matters when it holds up in a real part, process, or product.</p></div></div></div>
+<div class="sec"><div class="hd"><h2>Behind HRY Engineering</h2></div><div>
+<p>HRY Engineering is run by Heru Yulindo, a mechanical engineer (Gunadarma University, 2023). His background covers plastic packaging, mold design review and trials, industrial engineering, and simulation with ANSYS, Moldflow and SolidWorks.</p></div></div>
+</div></div>
+
+<div class="page pg" id="services"><div class="wrap">
+<div class="sec"><div class="hd"><h2>Services</h2><p>Six service categories, each focused on moving a problem toward a workable solution.</p></div><div class="g2" id="svcgrid"></div></div>
+</div></div>
+
+<div class="page pg" id="projects"><div class="wrap">
+<div class="sec"><div class="hd"><h2>Projects</h2><p>Design and analysis work from university, personal projects, and HRY Engineering’s first mold design.</p></div><div class="g2" id="projgrid"></div></div>
+</div></div>
+
+<div class="page pg" id="process"><div class="wrap">
+<div class="sec"><div class="hd"><h2>From problem to solution</h2><p>The same path on every project, scaled to the size of the problem.</p></div><div class="six" id="sixgrid2"></div></div>
+<div class="sec"><div class="hd"><h2>What helps us start</h2></div><div><ul style="color:var(--mut);max-width:62ch"><li>The goal: what the part or process must do</li><li>Existing drawings, photos, samples, or data</li><li>Material, quantity, and manufacturing method if known</li><li>Target date and any hard constraints</li></ul></div></div>
+</div></div>
+
+<div class="page pg" id="contact"><div class="wrap">
+<div class="sec"><div class="hd"><h2>Start a project</h2><p>Describe the problem in a few lines. We will reply by email.</p><p><a href="mailto:hryengineering@gmail.com">hryengineering@gmail.com</a></p></div>
+<form id="f">
+<label>Name<input name="n" required autocomplete="name"></label>
+<label>Your email<input name="e" type="email" required autocomplete="email"></label>
+<label>What do you need?<select name="t"><option>Engineering design</option><option>Engineering analysis</option><option>Prototyping support</option><option>Manufacturing</option><option>Project management</option><option>Engineering consulting</option><option>Not sure yet</option></select></label>
+<label>Describe the problem<textarea name="m" rows="6" required></textarea></label>
+<button class="btn" type="submit">Send by email</button>
+<div class="note">This opens your email app with the message filled in.</div>
+</form></div>
+</div></div>
+</main>
+<footer><div class="wrap"><div><b style="color:#fff">HRY Engineering</b><br>Engineering Ideas Into Practical Solutions.</div><div><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#contact">Contact</a><br><br>© 2026 HRY Engineering. Indonesia.</div></div></footer>
+<script>
+var S=[["Engineering Design","Turning a requirement into drawings and models that can be built.",["2D technical drawings","3D CAD modeling","Mechanical component design","Design optimization","Design for Manufacturing (DFM)"],"2D drawings, 3D CAD models, design notes"],
+["Engineering Analysis","Evaluating a design with calculation and simulation before it is made.",["Finite Element Analysis (FEA)","Structural and stress analysis","Thermal analysis","Engineering calculations","Simulation-based design evaluation"],"Analysis report with assumptions, load cases, and results"],
+["Prototyping Support","Moving a concept to a part you can test.",["Prototype concept development","3D printing preparation","Prototype iteration","Design validation support"],"Print-ready models, iteration notes, validation checklist"],
+["Manufacturing","Matching the design to a practical production process.",["Material and process selection","Manufacturing process review","Machining, casting, and molding considerations","Assembly and measurement planning"],"Process and material recommendations, DFM review notes"],
+["Project Management","Keeping technical work on scope, schedule, and cost.",["Planning and coordination","Technical scope definition","Cost and schedule awareness","Technical documentation"],"Technical scope, schedule, and progress records"],
+["Engineering Consulting","Independent technical input when you need a second opinion.",["Concept and feasibility exploration","Material and process exploration","Test plans and reports","Technical documentation"],"Feasibility notes, test plans, technical reports"]];
+var ST=[["Understand the problem","Define the goal, constraints, and what success looks like."],["Study the context","Review drawings, parts, data, and how the product is made or used."],["Design and analyze","Develop concepts, model them in CAD, and evaluate by calculation or simulation."],["Check for manufacturing","Review materials and processes so the design can be built reliably."],["Validate and iterate","Support prototyping and testing, then refine."],["Deliver","Hand over drawings, models, and a clear summary of decisions."]];
+var P=[["2×3 cavity extrusion blow mold","Mold for a 450 mL rounded bottle, optimized for the SMC 2000 DTC machine. Covers cavity layout, cooling system, and structure within the machine’s limits.","Mold design","HRY Engineering, 2025"],
+["Hatchback car body crash simulation","Car body modeled in SolidWorks, then crash-tested virtually with different materials and speeds to find stress, deformation, and where the body yields.","Analysis","SolidWorks, ANSYS Explicit Dynamics","University final project"],
+["Low-cost automation with Karakuri","Gravity and inertia-based material handling in place of powered systems. Static FEA gave minimum safety factors of 4.6 on horizontal bars and 12 on vertical bars.","Design and analysis","SolidWorks","University capstone"],
+["Taperless wind turbine blade","Small horizontal-axis blade with the NREL S822 airfoil. Blade element momentum theory set chord length and twist; performance shown as power, thrust, and torque coefficients.","Design and analysis","QBlade, SolidWorks","University"],
+["Prototype car aerodynamics","CFD study of a streamlined prototype car body, with pressure and velocity contours around the shell.","Analysis","ANSYS"],
+["Car chassis static analysis","Frame modeled with dimensioned drawings and checked by FEA for stress, displacement, and safety factor under several load cases.","Analysis","CAD, FEA"],
+["Warehouse ladder","Mobile platform ladder in steel tube and plate on casters, with 3D models and dimensioned 2D drawings.","Design","CAD"],
+["Scissor dandori rack","Rack with a scissor-lift mechanism for material handling, detailed with assembly views and connection details.","Design","SolidWorks"],
+["Plastic cap Moldflow study","Fill time, injection pressure, air traps, and weld lines analyzed to judge gate location and molding parameters.","Analysis","Autodesk Moldflow"]];
+function $(i){return document.getElementById(i)}
+function sv(a){return a.map(function(s){return '<div class="card"><h3>'+s[0]+'</h3><p>'+s[1]+'</p><ul>'+s[2].map(function(i){return '<li>'+i+'</li>'}).join('')+'</ul><div class="out"><b>Typical output:</b> '+s[3]+'</div></div>'}).join('')}
+function pj(a){return a.map(function(p){return '<div class="card"><h3>'+p[0]+'</h3><p>'+p[1]+'</p><dl class="tb"><dt>Type</dt><dd>'+p[2]+'</dd><dt>Tools</dt><dd>'+p[3]+'</dd>'+(p[4]?'<dt>Context</dt><dd>'+p[4]+'</dd>':'')+'</dl></div>'}).join('')}
+function six(){return ST.map(function(s,i){return '<div><b>'+(i+1)+'</b><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join('')}
+$("capgrid").innerHTML=S.map(function(s){return '<div class="card"><h3>'+s[0]+'</h3><p>'+s[1]+'</p><p style="margin:0;font-size:14px">'+s[2].slice(0,3).join(', ')+'</p></div>'}).join('');
+$("sixgrid").innerHTML=six();$("sixgrid2").innerHTML=six();
+$("svcgrid").innerHTML=sv(S);$("projgrid").innerHTML=pj(P);$("featgrid").innerHTML=pj([P[0],P[1],P[2]]);
+var ids=["home","about","services","projects","process","contact"];
+function route(){var h=(location.hash||"#home").slice(1);if(ids.indexOf(h)<0)h="home";
+ids.forEach(function(i){$(i).classList.toggle("on",i===h)});
+document.querySelectorAll("#nav a").forEach(function(a){if(a.getAttribute("href")==="#"+h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});window.scrollTo(0,0)}
+window.addEventListener("hashchange",route);route();
+$("f").addEventListener("submit",function(e){e.preventDefault();var d=new FormData(e.target);
+var b="Name: "+d.get("n")+"\nEmail: "+d.get("e")+"\nNeed: "+d.get("t")+"\n\n"+d.get("m");
+location.href="mailto:hryengineering@gmail.com?subject="+encodeURIComponent("Project inquiry from "+d.get("n"))+"&body="+encodeURIComponent(b)});
+</script>
+</body>
+</html>
